@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeWork №2 JavaScript</title>
+</head>
+<body>
+    <script>
+        // Задание 1
+        // Создать переменные num1, num2 которые пользователь вводит с клавиатуры
+        // Проверьте, что переменная num1 равна или меньше 1, а переменная num2 больше или равна 3.
+
+        const num1 = +prompt("Введите первое число");
+        const num2 = +prompt("Введите второе число");
+        if (num1 <= 1 && num2 >= 3) {
+            console.log(`Пользователь ввел числа: ${num1} и  ${num2}`);
+        } else {
+            console.log("Ввод не удовлетворяет условиям");
+        }
+
+        // Задание 2
+        // Перепишите код к тернарному оператору
+
+        // let test = true;
+        // if (test === true) {
+        // console.log('+++');
+        // } else {
+        // console.log('---');
+        // }
+        
+        let test = true;
+        console.log(test === true ? "+++" : "---");
+
+
+        // Задание 3
+        // В переменной day лежит какое-то число из интервала от 1 до 31. Определите в какую декаду месяца попадает это число (в первую, вторую или третью).
+        const firstDayOfMonth = 1;
+        const lastDayOfmonth = 31;
+        const day = Math.floor(Math.random() * (lastDayOfmonth - firstDayOfMonth + 1) + firstDayOfMonth)
+        if (day < 11) {
+            console.log(`День под номером ${day} относится к первой декаде месяца`);
+        } else if (day < 21) {
+            console.log(`День под номером ${day} относится ко второй декаде месяца`);            
+        } else {
+            console.log(`День под номером ${day} относится к третьей декаде месяца`);
+        }
+
+        // Задание 4
+        // Необязательное задание. (Если вам показалось домашнее задание простым, выполняем данный пункт)
+        // (Для решения задания вам потребуется оператор остаток от деления %, например 10%3 === 1 , десять разделить на 3, остаток 1, второй пример 7 % 5, тут остаток от деления будет 2, ну и 3 пример это 14 % 10 === 4, остаток от деления на 10 будет равен 4)
+
+        // Необходимо от пользователя получить число.
+        // Необходимо вывести разряды числа, а именно: количество сотен, десятков и единиц.
+
+        const digitsNumber = ['десятков тысяч: ','тысяч: ','сотен: ','десятков: ', 'единиц: '];
+        let userNumber = prompt("Введите число");
+        let answer = `В числе ${userNumber} количество `;
+        let semiResult = "";
+        let digitIndex = digitsNumber.length - 1;
+        if (digitIndex > 5) {
+            console.log("Число слишком большое");
+        } else {
+            userNumber = Number(userNumber);
+            while(userNumber > 0) {
+                semiResult = ", " + digitsNumber[digitIndex] + (userNumber % 10) + semiResult;
+                userNumber = Math.floor(userNumber / 10);
+                digitIndex = digitIndex - 1;
+            }
+
+            answer = answer + semiResult.substring(2);
+            console.log(answer);
+        }
+
+    </script>
+</body>
+</html>
