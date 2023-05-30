@@ -8,8 +8,21 @@
 // 10 – четное число
 
 const printNumbers = (start, finish) => {
+    const zeroSuffix = " - это ноль";
+    const evenSuffix = " - четное число";
+    const oddSuffix = " - нечетное число";
+
     for (let i = start; i < finish; i++) {
-        console.log(i);
+        let line = i;
+
+        if (i === 0) {
+            line += zeroSuffix;
+        } else if (i % 2 === 0) {
+            line += evenSuffix;
+        } else {
+            line += oddSuffix;
+        }
+        console.log(line);
     }
 }
 
