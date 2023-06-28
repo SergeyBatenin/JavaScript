@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 10</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="main center">
+        <h1 class="main__heading">Герои мультсериала "Рикки и Морти"</h1>
+        <div class="main__content"></div>
+        <div class="main__buttons">
+            <p class="main__content_more">Посмотреть еще героев</p>
+            <p class="main__content_hidden visible">Свернуть</p>
+        </div>
+    </main>
+    <script src="data.js"></script>
+    <script>
+        const createCard = (rawData) => {
+            // id(номер) героя с базы
+            const heroId = document.createElement("h3");
+            heroId.textContent = rawData.id;
+            // имя героя
+            const heroName = document.createElement("h2");
+            heroName.textContent = rawData.name;
+            // адрес фото героя
+            const heroImageUrl = document.createElement("img");
+            heroImageUrl.src = rawData.image;
+            // как часто герой встречается в истории
+            const heroFrequency = document.createElement("p");
+            heroFrequency.classList.add("content__card_frequency");
+            heroFrequency.textContent = `Данный персонаж встречается ${rawData.episode.length} раз(а)`;            
+            
+            // создается карточка с данными о герое
+            const heroCard = document.createElement("div");
+            heroCard.classList.add("content__card");
+            heroCard.append(heroId);
+            heroCard.append(heroName);
+            heroCard.append(heroImageUrl);
+            heroCard.append(heroFrequency);
+            
+            // добавляем массив для удобной работы с карточками в последующем
+            heroes.push(heroCard);
+            // Стандартно отображаем 3 карточки, остальные по желанию пользователя
+            if (heroes.length > 3) {
+                heroCard.classList.add("visible");
+            }
+            // добавляем карточки в блок с контентом
+            divContent.append(heroCard);
+        }
+
+        const DEFAULT_VISIBLE_CARDS = 3;
+        const divContent = document.querySelector('.main__content');
+        const heroes = [];
+        
+        const data = JSON.parse(dataInfo).results;
+        data.forEach(el => createCard(el));
+
+        const showMoreButton = document.querySelector('.main__content_more');
+        const hiddenButton = document.querySelector('.main__content_hidden');
+
+        let countVisibleCards = DEFAULT_VISIBLE_CARDS;
+
+        showMoreButton.addEventListener("click", e => {
+
+            hiddenButton.classList.remove("visible");
+
+            let newCountVisibleCards = countVisibleCards + 3;
+
+            for ( ; countVisibleCards < heroes.length && countVisibleCards < newCountVisibleCards; ) {
+                heroes[countVisibleCards++].classList.remove("visible");
+            }
+
+            if (countVisibleCards >= heroes.length) {
+                showMoreButton.classList.add("visible");
+            }
+        })
+
+        hiddenButton.addEventListener('click', e => {
+            showMoreButton.classList.remove("visible");
+            hiddenButton.classList.add("visible");
+            for (let index = DEFAULT_VISIBLE_CARDS; index < countVisibleCards; index++) {
+                heroes[index].classList.add("visible");                
+            }
+            countVisibleCards = DEFAULT_VISIBLE_CARDS;
+        });
+
+    </script>
+</body>
+</html>
