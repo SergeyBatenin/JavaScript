@@ -1,39 +1,3 @@
-// const dataInfo = fetch('https://rickandmortyapi.com/api/character')
-//                 .then(res => res.json())
-//                 .then(data => data.results.forEach(element => {                    
-//                     const heroId = element.id;
-//                     const heroName = element.name;
-//                     const heroImageUrl = element.image;
-//                     const meetingFrequency = element.episode.length;
-
-//                     const heroIdCard = document.createElement("h3");
-//                     heroIdCard.textContent = heroId;
-//                     const heroNameCard = document.createElement("h2");
-//                     heroNameCard.textContent = heroName;
-//                     const heroImageCard = document.createElement("img");
-//                     heroImageCard.src = heroImageUrl;
-//                     const heroInfoCard = document.createElement("p");
-//                     heroInfoCard.classList.add("content__card_frequency");
-//                     heroInfoCard.textContent = `Данный персонаж встречается ${meetingFrequency} раз(а)`;
-                    
-                    
-//                     const heroCard = document.createElement("div");
-//                     heroCard.classList.add("content__card");
-//                     heroCard.append(heroIdCard);
-//                     heroCard.append(heroNameCard);
-//                     heroCard.append(heroImageCard);
-//                     heroCard.append(heroInfoCard);
-                    
-//                     // console.log(heroCard);
-//                     // heroCard.classList.add("visible");
-//                     heroes.push(heroCard);
-//                     console.log("я создал и добавил очредной элемент в массив");
-//                     // divContent.append(heroCard);
-//                 }));
-// console.log(heroes.length);
-// divContent.insertAdjacentText("beforeEnd", heroes[0]);
-// divContent.insertAdjacentText("beforeEnd", heroes[1]);
-// divContent.insertAdjacentText("beforeEnd", heroes[2]);
 const dataInfo = `
 {
     "info": {
